@@ -22,16 +22,16 @@
     <!-- 二、SpringMVC 的前端控制器，拦截所有请求
         1. springmvc 中央控制器
         2. 负责处理所有的应用请求
-        3. 如果没有指定 spirngmvc 的配置文件，默认为 servlet-name 的值-servlet.xml
+        3. 如果没有指定 spirngmvc 的配置文件，默认为 servlet-name-servlet.xml 去读取
         4. 如果指定了 springmvc 的配置文件，则以指定的为准
     -->
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>springDispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>springDispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
