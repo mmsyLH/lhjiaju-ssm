@@ -3,5 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+    <!-- 1. 如果一个包下有很多的类，我们可以直接引入包
+2. 这样该包下面的所有类名，可以直接使用
+-->
+    <settings>
+        <!--选项里自带的就这一个能用-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--自定义大小写-->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true" />-->
+    </settings>
+    <typeAliases>
+        <package name="asia.lhweb.furn.bean"/>
+    </typeAliases>
 </configuration>
