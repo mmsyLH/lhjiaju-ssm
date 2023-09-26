@@ -3,10 +3,10 @@ package asia.lhweb.furn.bean;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Furn {
@@ -22,7 +22,20 @@ public class Furn {
 
     private Integer stock;
 
-    private String imgPath;
+    private String imgPath="assets/images/product-image/1.jpg";
+
+    public Furn(Integer id, String name, String maker, BigDecimal price, Integer sales, Integer stock, String imgPath) {
+        this.id = id;
+        this.name = name;
+        this.maker = maker;
+        this.price = price;
+        this.sales = sales;
+        this.stock = stock;
+        if(StringUtils.hasText(imgPath)){
+            this.imgPath = imgPath;
+
+        }
+    }
 
     public Integer getId() {
         return id;

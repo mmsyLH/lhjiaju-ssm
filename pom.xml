@@ -25,7 +25,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
-            <scope>test</scope>
         </dependency>
 
         <!--引入springMVC时会自动引入spring核心的库-->
@@ -91,8 +90,12 @@
             <version>1.18.20</version>
         </dependency>
 
-
-
+        <!-- 引入 jackson,处理 json 数据 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.4</version>
+        </dependency>
 
     </dependencies>
 
