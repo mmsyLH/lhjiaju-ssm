@@ -36,4 +36,12 @@ public interface FurnService {
     * @param id id
     */
    void delById(Integer id);
+
+   /**
+    * 按条件查找
+    *
+    * @param name 名字
+    * @return {@link List}<{@link Furn}>
+    */
+   List<Furn> findByCondition(String name);
 }

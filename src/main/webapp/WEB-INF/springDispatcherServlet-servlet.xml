@@ -27,4 +27,6 @@
     <mvc:default-servlet-handler/>
     <!-- 能支持 SpringMVC 高级功能，比如 JSR303 校验，映射动态请求-->
     <mvc:annotation-driven/>
+
+    <!-- Knife4j配置 -->
 </beans>
