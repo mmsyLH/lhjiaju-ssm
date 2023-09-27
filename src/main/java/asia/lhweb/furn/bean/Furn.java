@@ -3,23 +3,30 @@ package asia.lhweb.furn.bean;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.util.StringUtils;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @NoArgsConstructor
 @ToString
 public class Furn {
     private Integer id;
-
+    @NotEmpty(message = "请输入家居名")
     private String name;
-
+    @NotEmpty(message = "请输入制造商")
     private String maker;
-
+    @NotNull(message = "请输入数字")
+    @Range(min = 0,message = "价格不能小于0")
     private BigDecimal price;
 
+    @NotNull(message = "请输入数字")
+    @Range(min = 0,message = "销量不能小于0")
     private Integer sales;
-
+    @NotNull(message = "请输入数字")
+    @Range(min = 0,message = "库存不能小于0")
     private Integer stock;
 
     private String imgPath="assets/images/product-image/1.jpg";

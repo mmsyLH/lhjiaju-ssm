@@ -7,10 +7,15 @@ import asia.lhweb.furn.service.FurnService;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,12 +28,28 @@ public class FurnController {
     @Resource
     private FurnService furnService;
 
+    /**
+     * @Validated 对接受到的javabean进行效验 然后封装到
+     *
+     * @param furn 家具
+     * @return {@link Result}
+     */
     @PostMapping("/save")
     @ResponseBody
 
-    public Result save(@RequestBody Furn furn) {
-        furnService.save(furn);
-        return Result.success();
+    public Result save(@Validated @RequestBody Furn furn, Errors errors) {
+        HashMap<String, Object> map = new HashMap<>();
+        List<FieldError> fieldErrors = errors.getFieldErrors();
+        for (FieldError fieldError : fieldErrors) {
+            map.put(fieldError.getField(),fieldError.getDefaultMessage());
+        }
+        if (map.isEmpty()){//效验通过
+            furnService.save(furn);
+            return Result.success();
+        }else {
+            return Result.error(map);
+        }
+
     }
 
     @ResponseBody

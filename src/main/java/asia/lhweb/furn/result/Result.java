@@ -3,6 +3,7 @@ package asia.lhweb.furn.result;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * 后端统一返回结果
@@ -13,6 +14,7 @@ public class Result<T> implements Serializable {
 
     private Integer code; //编码：200成功，0和其它数字为失败
     private String msg; //错误信息
+    private Map msgMap; //错误信息
     private T data; //数据
 
     public static <T> Result<T> success() {
@@ -30,6 +32,12 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> error(String msg) {
         Result result = new Result();
         result.msg = msg;
+        result.code = 0;
+        return result;
+    }
+    public static <T> Result<T> error( Map map) {
+        Result result = new Result();
+        result.msgMap = map;
         result.code = 0;
         return result;
     }

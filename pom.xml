@@ -104,7 +104,14 @@
             <version>5.2.1</version>
         </dependency>
 
-
+        <!-- JSR303 数据校验支持
+            引入 hibernate-validator
+            -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.0.Final</version>
+        </dependency>
 
         <!--引入Knife4j的官方start包,该指南选择Spring Boot版本<3.0,开发者需要注意-->
         <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter -->
