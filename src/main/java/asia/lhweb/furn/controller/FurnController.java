@@ -7,7 +7,6 @@ import asia.lhweb.furn.service.FurnService;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
@@ -23,7 +22,6 @@ import java.util.List;
  * @date : 2023/9/24
  */
 @Controller
-
 public class FurnController {
     @Resource
     private FurnService furnService;

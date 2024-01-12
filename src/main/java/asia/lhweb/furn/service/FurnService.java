@@ -14,7 +14,7 @@ public interface FurnService {
     *
     * @param furn 家具
     */
-   void   save(Furn furn);
+   void save(Furn furn);
 
    /**
     * 找到所有家居
