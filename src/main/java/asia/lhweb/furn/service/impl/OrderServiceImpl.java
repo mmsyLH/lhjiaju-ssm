@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public List<Order> findAll() {
-        return  orderMapper.selectByExample(null);
+        return  orderMapper.findAllOrder();
     }
 
     /**
@@ -69,6 +69,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findByCondition(String name) {
         OrderExample memberExample = new OrderExample();
+        // Order order = new Order();
         //通过Criteria可以设置查询的条件
         OrderExample.Criteria criteria = memberExample.createCriteria();
 
@@ -76,6 +77,6 @@ public class OrderServiceImpl implements OrderService {
             // criteria.ad("%"+name+"%");
         }
         //name没有传值  依然是返回查询所有的记录
-        return orderMapper.selectByExample(memberExample);
+        return orderMapper.selectByExample(null);
     }
 }

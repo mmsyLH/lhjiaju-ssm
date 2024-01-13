@@ -101,9 +101,12 @@ public class MemberController {
         // 3. 看源码 PageInfo(List<T> list, int navigatePages)
         PageInfo pageInfo = new PageInfo(furnList, pageSize);
         long total = pageInfo.getTotal();
+        System.out.println(total);
         List list = pageInfo.getList();
         // page.getResult();
         PageResult pageResult = new PageResult(total, list);
+        System.out.println("-------------------------------------");
+        System.out.println("用户pageResult"+pageResult);
         return Result.success(pageResult);
     }
 

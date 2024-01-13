@@ -5,7 +5,7 @@
   <!-- Order entity -->
   <resultMap id="BaseResultMap" type="asia.lhweb.furn.bean.Order">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
@@ -48,26 +48,22 @@
   </sql>
 
   <!-- Select Statements -->
-  <select id="selectByExample" parameterType="asia.lhweb.furn.bean.OrderExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from order
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from order
     where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="findAllOrder" resultType="asia.lhweb.furn.bean.Order">
+    SELECT
+      id as id,
+      create_time as createTime,
+      price as price,
+      status as status,
+      member_id as memberId,
+      address as address
+    FROM `order`
   </select>
 
   <!-- Delete Statements -->

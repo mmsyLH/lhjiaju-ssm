@@ -1,6 +1,5 @@
 package asia.lhweb.furn.controller;
 
-import asia.lhweb.furn.bean.Member;
 import asia.lhweb.furn.bean.Order;
 import asia.lhweb.furn.result.PageResult;
 import asia.lhweb.furn.result.Result;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 会员控制器
+ * 顺序控制器
  *
  * @author 罗汉
  * @date 2024/01/12
@@ -58,9 +57,9 @@ public class OrderController {
     @ResponseBody
     @RequestMapping("/orders")
     public Result<List<Order>> lists() {
-        List<Order> memberList = orderService.findAll();
-        System.out.println(memberList);
-        return Result.success(memberList);
+        List<Order> orderList = orderService.findAll();
+        System.out.println(orderList);
+        return Result.success(orderList);
     }
 
     @ResponseBody
@@ -85,14 +84,15 @@ public class OrderController {
      * @return {@link Result}<{@link PageResult}>
      */
     @ResponseBody
-    @RequestMapping("/membersByPage")
-    public Result<PageResult> listMembersByPage(@RequestParam(defaultValue = "1") Integer pageNum,
+    @RequestMapping("/ordersByPage")
+    public Result<PageResult> listOrdersByPage(@RequestParam(defaultValue = "1") Integer pageNum,
                                               @RequestParam(defaultValue = "5") Integer pageSize) {
         // 查询前，需要调用 PageHelper.startPage()
         // 看下源码 startPage(int pageNum, int pageSize)
         PageHelper.startPage(pageNum, pageSize);
         // 在 PageHelper.startPage() 后调用 findAll 就是分页查询(物理分页有 limit)
         List<Order> orderList = orderService.findAll();
+        System.out.println("orderList:"+orderList);
         // 分页查询完之后，可以使用 pageInfo 来包装查询后的结果，
         // 1. 只需要将 pageInfo 交给页面就行
         // 2. pageInfo 封装了详细的分页信息，包括查询出来的数据
@@ -103,19 +103,22 @@ public class OrderController {
         List list = pageInfo.getList();
         // page.getResult();
         PageResult pageResult = new PageResult(total, list);
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("pageResult:"+pageResult);
         return Result.success(pageResult);
     }
 
     /**
-     * 根据用户名进行分页查询
+     * 按条件页列出顺序
      *
      * @param pageNum  要显示几页
      * @param pageSize 每页要显示几条记录
+     * @param search   搜索
      * @return {@link Result}<{@link PageResult}>
      */
     @ResponseBody
-    @RequestMapping("/userByConditionPage")
-    public Result<PageResult> listUserByConditionPage(@RequestParam(defaultValue = "1") Integer pageNum,
+    @RequestMapping("/orderByConditionPage")
+    public Result<PageResult> listOrderByConditionPage(@RequestParam(defaultValue = "1") Integer pageNum,
                                                        @RequestParam(defaultValue = "5") Integer pageSize,
                                                        @RequestParam(defaultValue = " ") String search) {
         System.out.println(pageNum+pageSize+search);

@@ -1,24 +1,16 @@
 package asia.lhweb.furn.bean;
 
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 
 /**
- * 订单表
+ * 订单
+
  *
  * @author 罗汉
- * @date 2023/04/08
+ * @date 2024/01/13
  */
 public class Order{
-    /**
-     * CREATE TABLE `order` (
-     * `id` VARCHAR(64) PRIMARY KEY, -- 订单号
-     * `create_time` DATETIME NOT NULL, -- 订单生成时间
-     * `price` DECIMAL(11,2) NOT NULL, -- 订单的金额
-     * `status` TINYINT NOT NULL, -- 状态 0 未发货 1 已发货 2 已结账
-     * `member_id` INT NOT NULL -- 该订单对应的会员id
-     * )CHARSET utf8 ENGINE INNODB
-     */
     private String id;
     private Date createTime;
     private BigDecimal price;
@@ -26,33 +18,8 @@ public class Order{
     private Integer memberId;
     private String address;
 
-    public Order(String id, Date createTime, BigDecimal price, Integer status, Integer memberId, String address) {
-        this.id = id;
-        this.createTime = createTime;
-        this.price = price;
-        this.status = status;
-        this.memberId = memberId;
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public Order() {
     }
-
-    // public Order(String id, Date createTime, BigDecimal price, Integer status, Integer memberId) {
-    //     this.id = id;
-    //     this.createTime = createTime;
-    //     this.price = price;
-    //     this.status = status;
-    //     this.memberId = memberId;
-    // }
 
     public String getId() {
         return id;
@@ -94,14 +61,11 @@ public class Order{
         this.memberId = memberId;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id='" + id + '\'' +
-                ", createTime=" + createTime +
-                ", price=" + price +
-                ", status=" + status +
-                ", memberId=" + memberId +
-                '}';
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -10,29 +10,30 @@
         </commentGenerator>
         <!-- 配置数据库连接信息-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/lhjiaju_ssm?characterEncoding=utf8"
+                        connectionURL="jdbc:mysql://localhost:3306/tmp?characterEncoding=utf8"
                         userId="root"
                         password="root">
         </jdbcConnection>
+
         <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
+            <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
         <!-- 指定 javaBean 生成的位置-->
-        <javaModelGenerator targetPackage="asia.lhweb.furn.bean"
+        <javaModelGenerator targetPackage="asia.lhweb.furn.bean2"
                             targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 指定 sql 映射文件生成的位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+        <sqlMapGenerator targetPackage="mapper2" targetProject=".\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 指定 dao 接口生成的位置, 也就是 mapper 接口-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="asia.lhweb.furn.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="asia.lhweb.furn.dao2"
                              targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 指定要逆向生成的表和生成策略-->
-        <table tableName="`order_item`" domainObjectName="OrderItem"/>
+        <table tableName="`order`" domainObjectName="Order"/>
     </context>
 </generatorConfiguration>
