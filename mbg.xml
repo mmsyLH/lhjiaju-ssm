@@ -9,7 +9,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- 配置数据库连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/lhjiaju_ssm?characterEncoding=utf8"
                         userId="root"
                         password="root">
@@ -33,6 +33,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 指定要逆向生成的表和生成策略-->
-        <table tableName="furn" domainObjectName="Furn"/>
+        <table tableName="`order_item`" domainObjectName="OrderItem"/>
     </context>
 </generatorConfiguration>
