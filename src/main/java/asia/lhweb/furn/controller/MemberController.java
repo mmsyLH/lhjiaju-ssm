@@ -118,8 +118,8 @@ public class MemberController {
      * @return {@link Result}<{@link PageResult}>
      */
     @ResponseBody
-    @RequestMapping("/userByConditionPage")
-    public Result<PageResult> listUserByConditionPage(@RequestParam(defaultValue = "1") Integer pageNum,
+    @RequestMapping("/memberByConditionPage")
+    public Result<PageResult> listMemberByConditionPageByConditionPage(@RequestParam(defaultValue = "1") Integer pageNum,
                                                        @RequestParam(defaultValue = "5") Integer pageSize,
                                                        @RequestParam(defaultValue = " ") String search) {
         System.out.println(pageNum+pageSize+search);
